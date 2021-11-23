@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { EditarGenero, Generos, Header, NovoGenero, Home } from './component'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-function App() {
+function App () {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <div>
+        <Header />
+        <Routes>
+          <Route path='/' exact element={<Home />} />
+          <Route path='/generos/:id' exact element={<EditarGenero />} />
+          <Route path='/generos' exact element={<Generos />} />
+          <Route path='/generos/novo' exact element={<NovoGenero />} />
+        </Routes>
+      </div>
+    </Router>
+  )
 }
 
-export default App;
+export default App
